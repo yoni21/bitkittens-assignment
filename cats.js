@@ -7,10 +7,11 @@ $(function() {
     method:'GET',
     dataType: 'json'
   }).done(function(data){
-        $(data.cats).each(function(index){
-          var cat = $('<img>').attr('src', this.photo).attr('alt','Photo of: ' + this.name)
-          $('#cat' + (index+1)).html(cat)
-        });
-      });
-    });
+      for (var i=0; i < data.cats.length; i++){
+
+    $('<img>').attr('src', data.cats[i].photo).appendTo('#cat' + (i+1));
+    }
+   });
+
   });
+});
